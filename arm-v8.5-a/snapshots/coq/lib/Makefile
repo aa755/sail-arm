@@ -1,9 +1,5 @@
 HAVE_OPAM_BBV=$(shell if opam config var coq-bbv:share >/dev/null 2>/dev/null; then echo yes; else echo no; fi)
 
-ifeq ($(HAVE_OPAM_BBV),no)
-BBV_DIR?=../../../bbv/src/bbv
-endif
-
 CORESRC=Prompt_monad.v  Prompt.v  Impl_base.v  Instr_kinds.v  Operators_bitlists.v  Operators_mwords.v  Operators.v  Values.v  State_monad.v  State.v  State_lifting.v  String.v  Real.v  Base.v
 PROOFSRC=Values_lemmas.v State_monad_lemmas.v State_lemmas.v Hoare.v
 SRC=$(CORESRC) $(PROOFSRC)
