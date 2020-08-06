@@ -1,25 +1,14 @@
 Note that building the Coq bytecode requires a considerable amount of memory.
-It should build on a 96GB machine.  It may be possible to build most of the
+It should build on a 40GB machine.  It may be possible to build most of the
 model on a smaller machine if the decode functions are removed.
 
-The only file that takes time to build is `aarch64.v`; it has 200K+ lines.
-All its dependencies build quickly.
-Thus, the initial part of `aarch64.v` can be browsed interactively.
-It took <10 minutes to interactively check until line 16K.
-
-
-Dependencies:
-````
-git clone https://github.com/mit-plv/bbv
-git checkout coq-8.9-compat
-make -j8
-make install
-````
-
-Build:
-`./build`. It has been successfully tested with Coq 8.9.0.
+Install a copy of <https://github.com/mit-plv/bbv> (e.g., by installing the
+`coq-bbv` coq opam package).  If it's built but not installed, set the
+`BBV_DIR` environment variable to the directory containing the built files.
+Then run `./build`.
 
 The Coq files were produced with
-* `sail` commit `4bcdbbe`, and
-* `sail-arm` commit `041c3c9` from the `coq-experimental` branch, which has
-  some manual changes that we will add to our ASL translation in future.
+* `sail` commit `2e892823`, and
+* `sail-arm` commit `16ebc4e` from the `coq-experimental` branch, which has
+  some manual changes that we will add to our ASL translation in future,
+and checked against bbv version 1.1 and coq 8.9.1.
